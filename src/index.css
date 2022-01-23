@@ -5,9 +5,65 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg);
+}
+
+:root {
+  --bg: #202023;
+  --nav-height: 60px;
+  --text-color: #dadce1;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1 {
+  margin: 0;
+}
+
+p {
+  cursor: default;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--nav-height);
+}
+
+.navitem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--nav-height) * 0.8);
+  height: calc(var(--nav-height) * 0.8);
+  border-radius: 50%;
+  color: var(--text-color);
+  background-color: var(--bg);
+  margin-right: 10px;
+  transition: 250ms;
+}
+
+.navitem:hover {
+  filter: brightness(1.2);
+}
+
+.navitem svg {
+  width: calc(var(--nav-height) * 0.5);
+  height: calc(var(--nav-height) * 0.5);
+  fill: var(--text-color);
 }
