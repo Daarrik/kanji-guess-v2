@@ -1,14 +1,14 @@
 const NavbarItem = ({ icon, url }) => {
   return (
-    <a 
-      className='navitem'
-      href={ url }
+    <a
+      className="flex-center navitem"
+      href={url}
       target="_blank"
       rel="noopener noreferrer"
     >
-      { icon }
+      {icon}
     </a>
   );
-}
+};
 
 export default NavbarItem;

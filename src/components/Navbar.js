@@ -1,9 +1,9 @@
 const Navbar = ({ children }) => {
   return (
-    <nav className='navbar'>
-      { children }
+    <nav id="navbar" className="flex-center">
+      {children}
     </nav>
   );
-}
+};
 
 export default Navbar;
