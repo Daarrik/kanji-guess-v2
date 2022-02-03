@@ -1,11 +1,11 @@
 import React from "react";
 
-interface Props {
+interface NavItemProps {
   icon: React.ReactElement;
   url: string;
 }
 
-const NavbarItem: React.FC<Props> = ({ icon, url }) => {
+const NavbarItem: React.FC<NavItemProps> = ({ icon, url }) => {
   return (
     <a
       className="flex-center navitem"

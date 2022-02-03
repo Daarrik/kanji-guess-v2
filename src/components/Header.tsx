@@ -1,6 +1,6 @@
 import Nav from "./Nav";
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <div id="header" className="flex-center">
       <p id="title">testing</p>

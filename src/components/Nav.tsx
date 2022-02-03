@@ -1,8 +1,7 @@
-import { ReactComponent as GithubIcon } from "../icons/github.svg";
 import { links } from "../constants/links";
 import NavItem from "./NavItem";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   return (
     <nav id="nav" className="flex-center">
       {links.map(({ name, url, icon }) => (
