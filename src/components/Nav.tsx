@@ -1,7 +1,7 @@
 import { links } from "../constants/links";
 import NavItem from "./NavItem";
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   return (
     <nav id="nav" className="flex-center">
       {links.map(({ name, url, icon }) => (
