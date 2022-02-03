@@ -1,13 +1,7 @@
 import { ReactComponent as GithubIcon } from "../icons/github.svg";
 import { ReactComponent as LinkedinIcon } from "../icons/linkedin.svg";
 
-interface LinkTypes {
-  name: string;
-  url: string;
-  icon: React.ReactElement;
-}
-
-export const links: Array<LinkTypes> = [
+export const links = [
   {
     name: "github",
     url: "https://github.com/Daarrik",

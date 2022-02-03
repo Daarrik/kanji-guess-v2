@@ -1,9 +1,7 @@
 import { useContext } from "react";
 import { KanjiContext } from "./KanjiProvider";
 
-interface ContainerProps {}
-
-const Container: React.FC<ContainerProps> = () => {
+const Container = () => {
   const { kanji, reading, newKanji } = useContext(KanjiContext);
 
   return (

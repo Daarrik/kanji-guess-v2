@@ -1,6 +1,6 @@
 import Nav from "./Nav";
 
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
     <div id="footer" className="flex-center">
       <h1 id="title">Darrik Houck</h1>

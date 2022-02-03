@@ -1,9 +1,4 @@
-interface NavItemProps {
-  icon: React.ReactElement;
-  url: string;
-}
-
-const NavbarItem: React.FC<NavItemProps> = ({ icon, url }) => {
+const NavbarItem = ({ icon, url }) => {
   return (
     <a
       className="flex-center navitem"
