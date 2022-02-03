@@ -5,8 +5,8 @@ import NavItem from "./NavItem";
 const Navbar = () => {
   return (
     <nav id="nav" className="flex-center">
-      {links.map((link) => (
-        <NavItem url={link.url} icon={link.icon} />
+      {links.map(({ name, url, icon }) => (
+        <NavItem key={name} url={url} icon={icon} />
       ))}
     </nav>
   );
