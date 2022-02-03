@@ -1,3 +1,5 @@
+# Vanilla JS version of the same project.
+
 ### `npm start`
 
 Runs the app in the development mode.\
