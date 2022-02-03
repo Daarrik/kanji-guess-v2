@@ -1,5 +1,3 @@
-import React from "react";
-
 interface NavItemProps {
   icon: React.ReactElement;
   url: string;
