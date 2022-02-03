@@ -1,5 +1,4 @@
 import Nav from "./Nav";
-import NavItem from "./NavItem";
 
 const Header = () => {
   return (

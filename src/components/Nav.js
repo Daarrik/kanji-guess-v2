@@ -1,10 +1,13 @@
-import NavItem from "./NavItem";
 import { ReactComponent as GithubIcon } from "../icons/github.svg";
+import { links } from "../constants/links";
+import NavItem from "./NavItem";
 
-const Navbar = ({ children }) => {
+const Navbar = () => {
   return (
     <nav id="nav" className="flex-center">
-      <NavItem icon={<GithubIcon />} url="https://github.com/Daarrik" />
+      {links.map((link) => (
+        <NavItem url={link.url} icon={link.icon} />
+      ))}
     </nav>
   );
 };
