@@ -1,6 +1,6 @@
 {
-  "short_name": "Kanken",
-  "name": "Kanji Kentei (漢字検定)",
+  "short_name": "Kanji Guess",
+  "name": "Kanji Guess V2 (漢字検定)",
   "icons": [],
   "start_url": ".",
   "display": "standalone",

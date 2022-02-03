@@ -34,5 +34,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@prettier/plugin-xml": "^1.2.0",
+    "prettier": "^2.5.1"
   }
 }

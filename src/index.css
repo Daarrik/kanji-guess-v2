@@ -4,8 +4,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 1024px;
+  margin: auto;
   background-color: var(--bg);
-  margin: 0;
 }
 
 :root {
@@ -35,12 +36,12 @@ a {
   justify-content: center;
 }
 
-#nav-container {
+#header {
   justify-content: space-between;
   padding: 0 10rem 0 10rem;
 }
 
-#navbar {
+#nav {
   height: var(--nav-height);
 }
 
