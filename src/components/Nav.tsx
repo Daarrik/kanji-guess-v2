@@ -1,7 +1,7 @@
 import { links } from "../constants/links";
 import NavItem from "./NavItem";
 
-const Navbar = () => {
+const Nav: React.FC = () => {
   return (
     <nav id="nav" className="flex-center">
       {links.map(({ name, url, icon }) => (
@@ -11,4 +11,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Nav;
