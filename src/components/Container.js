@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const Container = () => {
   const [{ kanji, reading }, setKanji] = useState({
     kanji: "漢字",
