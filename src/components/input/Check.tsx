@@ -14,6 +14,7 @@ const Check: React.FC<CheckProps> = ({ isText }) => {
     <button
       onClick={() => {
         console.log(guess === reading);
+        console.log(isText);
       }}
     >
       test

@@ -4,7 +4,6 @@ import { KanjiContext } from "../context/KanjiProvider";
 import Check from "./Check";
 
 const TextInput: React.FC = () => {
-  const { reading } = useContext(KanjiContext);
   const { guess, setGuess } = useContext(GuessContext);
 
   return (
