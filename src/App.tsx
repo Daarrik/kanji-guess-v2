@@ -1,7 +1,7 @@
-import Container from "./components/Container";
-import Footer from "./components/Footer";
 import KanjiProvider from "./components/context/KanjiProvider";
 import GuessProvider from "./components/context/GuessProvider";
+import Container from "./components/Container";
+import Footer from "./components/Footer";
 
 const App: React.FC = () => {
   return (

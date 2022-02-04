@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { GuessContext } from "../context/GuessProvider";
-import { KanjiContext } from "../context/KanjiProvider";
 import Check from "./Check";
 
 const TextInput: React.FC = () => {

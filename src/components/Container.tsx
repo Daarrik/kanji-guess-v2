@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
-import TextInput from "./input/TextInput";
 import { KanjiContext } from "./context/KanjiProvider";
+import TextInput from "./input/TextInput";
 import BoxInput from "./input/box/BoxInput";
 
 const Container: React.FC = () => {
