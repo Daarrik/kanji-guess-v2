@@ -1,4 +1,4 @@
-# *Roughly* a Vanilla JS version of the same project.
+# The same project but without using Context API.
 
 ### `npm start`
 
