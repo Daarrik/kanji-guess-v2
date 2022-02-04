@@ -1,4 +1,4 @@
-# Vanilla JS version of the same project.
+# *Roughly* a Vanilla JS version of the same project.
 
 ### `npm start`
 
