@@ -6,8 +6,8 @@ const Container: React.FC = () => {
 
   return (
     <div>
-      <h1 className="text-normal">{kanji}</h1>
-      <p className="text-normal">{reading}</p>
+      <h1 className="text-jp">{kanji}</h1>
+      <p className="text-jp">{reading}</p>
       <button onClick={newKanji}>fake kanji fetch button</button>
     </div>
   );

@@ -26,6 +26,7 @@ code {
 h1,
 p {
   margin: 0;
+  color: var(--text-color);
   cursor: default;
 }
 
@@ -42,7 +43,6 @@ a {
 
 #title {
   font-family: var(--def-font);
-  color: var(--text-color);
 }
 
 #footer {
@@ -79,7 +79,10 @@ a {
 
 .text-normal {
   font-family: var(--def-font);
-  color: var(--text-color);
+}
+
+.text-jp {
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 .padding-right {
