@@ -1,10 +1,6 @@
 import { createContext, useState } from "react";
 
-export const KanjiContext = createContext({
-  kanji: "漢字",
-  reading: "かんじ",
-  newKanji: () => {},
-});
+export const KanjiContext = createContext();
 
 const KanjiProvider = ({ children }) => {
   const [kanji, setKanji] = useState("漢字");
