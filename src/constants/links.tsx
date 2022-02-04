@@ -1,13 +1,13 @@
 import { ReactComponent as GithubIcon } from "../icons/github.svg";
 import { ReactComponent as LinkedinIcon } from "../icons/linkedin.svg";
 
-type NavLink = {
+interface NavLink {
   name: string;
   url: string;
   icon: React.ReactElement;
 }
 
-export const links: NavLink[] = [
+export const links: Array<NavLink> = [
   {
     name: "github",
     url: "https://github.com/Daarrik",

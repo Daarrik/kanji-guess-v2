@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-type KanjiContextType = {
+interface KanjiContextType {
   kanji: string;
   reading: string;
   newKanji?: () => void;
