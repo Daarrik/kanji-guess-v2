@@ -6,7 +6,9 @@ const App: React.FC = () => {
   return (
     <div>
       <KanjiProvider>
-        <Container />
+        <main id="main" className="flex-center">
+          <Container />
+        </main>
       </KanjiProvider>
       <Footer />
     </div>

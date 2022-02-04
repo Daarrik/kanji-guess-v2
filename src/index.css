@@ -45,6 +45,12 @@ a {
   font-family: var(--def-font);
 }
 
+#container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 #footer {
   position: absolute;
   display: flex;
@@ -82,7 +88,7 @@ a {
 }
 
 .text-jp {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 .padding-right {
