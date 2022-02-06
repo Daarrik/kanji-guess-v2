@@ -1,12 +1,13 @@
-import { useState, useContext, useEffect } from "react";
-import { GuessContext } from "../../context/GuessProvider";
+import { useState } from "react";
 
 interface CharBoxProps {
   kana: string;
 }
 
 const CharBox: React.FC<CharBoxProps> = ({ kana }) => {
-  return <button>{kana}</button>;
+  const [clicked, setClicked] = useState(false);
+
+  return <button onClick={() => setClicked(!clicked)}>{kana}</button>;
 };
 
 export default CharBox;

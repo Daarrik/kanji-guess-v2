@@ -1,6 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { KanjiContext } from "../../context/KanjiProvider";
 import CharBox from "./CharBox";
+
+export interface BoxState {
+  idx: number;
+  box: React.ReactElement;
+  clicked: boolean;
+}
 
 const BoxInput: React.FC = () => {
   const { reading } = useContext(KanjiContext);
