@@ -5,7 +5,7 @@ import BoxInput from "./input/box/BoxInput";
 import { GuessContext } from "./context/GuessProvider";
 
 const Container: React.FC = () => {
-  const [textInput, setTextInput] = useState(false);
+  const [textInput, setTextInput] = useState(true);
   const { kanji, reading, newKanji } = useContext(KanjiContext);
   const { guess, setGuess } = useContext(GuessContext);
 

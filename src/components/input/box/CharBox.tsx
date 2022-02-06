@@ -1,22 +1,24 @@
 import { useState, useContext } from "react";
 import { GuessContext } from "../../context/GuessProvider";
+import { BoxState } from "./BoxInput";
 
 interface CharBoxProps {
+  idx: number;
   kana: string;
+  clickBox: (boxClicked: number) => void;
 }
 
-const CharBox: React.FC<CharBoxProps> = ({ kana }) => {
-  const { guess, setGuess } = useContext(GuessContext);
-  const [clicked, setClicked] = useState(false);
-
-  const handleClick = (): void => {
-    
-  }
-
+const CharBox: React.FC<CharBoxProps> = ({ idx, kana, clickBox }) => {
   return (
-    <button onClick={handleClick}>
+    <button
+      onClick={() => {
+        console.log(`From CharBox: ${idx}: ${kana}`);
+        clickBox(idx);
+      }}
+    >
       {kana}
-    </button>);
+    </button>
+  );
 };
 
 export default CharBox;
