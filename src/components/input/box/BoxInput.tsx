@@ -1,16 +1,23 @@
-import { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { KanjiContext } from "../../context/KanjiProvider";
 import CharBox from "./CharBox";
 
+interface BoxState {
+  box: React.ReactElement;
+  clicked: boolean;
+}
+
 const BoxInput: React.FC = () => {
   const { reading } = useContext(KanjiContext);
-  return (
-    <div>
-      {reading.split("").map((kana, idx) => (
-        <CharBox key={idx} kana={kana} />
-      ))}
-    </div>
-  );
+  const [boxes, setBoxes] = useState<React.ReactElement[]>([]);
+
+  useEffect(() => {
+    setBoxes(
+      reading.split("").map((kana, idx) => <CharBox key={idx} kana={kana} />)
+    );
+  }, [reading]);
+
+  return <div>{boxes}</div>;
 };
 
 export default BoxInput;
