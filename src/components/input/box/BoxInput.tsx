@@ -14,13 +14,11 @@ const BoxInput: React.FC = () => {
 
   useEffect(() => {
     setBoxes(
-      reading
-        .split("")
-        .map((kana, idx) => ({
-          idx: idx,
-          kana: kana,
-          clicked: idx % 2 === 0 ? true : false,
-        }))
+      reading.split("").map((kana, idx) => ({
+        idx: idx,
+        kana: kana,
+        clicked: idx % 2 === 0 ? true : false,
+      }))
     );
   }, [reading]);
 
