@@ -24,8 +24,9 @@ code {
     monospace;
 }
 
+p,
 h1,
-p {
+h2 {
   margin: 0;
   color: var(--text-color);
   cursor: default;

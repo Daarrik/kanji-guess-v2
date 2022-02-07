@@ -10,15 +10,17 @@ const Check: React.FC<CheckProps> = ({ isText }) => {
   const { reading } = useContext(KanjiContext);
   const { guess, setGuess, setGuessed } = useContext(GuessContext);
 
-  return (
-    <button
-      onClick={() => {
-        console.log(guess === reading);
-      }}
-    >
-      test
-    </button>
-  );
+  const handleGuess = () => {
+    if (guess === reading) {
+      setGuessed(true);
+      setGuess("");
+    } else {
+      setGuessed(false);
+      setGuess("");
+    }
+  };
+
+  return <button onClick={handleGuess}>test</button>;
 };
 
 export default Check;
