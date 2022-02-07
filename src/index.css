@@ -15,7 +15,8 @@ body {
   --nav-height: 80px;
   --text-color: #dadce1;
   --full-width: 800px;
-  --def-font: "Roboto Condensed", sans-serif;
+  --eng-font: "Roboto Condensed", sans-serif;
+  --jp-font: "Noto Sans JP", sans-serif;
 }
 
 code {
@@ -42,7 +43,7 @@ a {
 }
 
 #title {
-  font-family: var(--def-font);
+  font-family: var(--eng-font);
 }
 
 #container {
@@ -83,12 +84,16 @@ a {
   fill: var(--text-color);
 }
 
-.text-normal {
-  font-family: var(--def-font);
+.text-eng {
+  font-family: var(--eng-font);
 }
 
 .text-jp {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: var(--jp-font);
+}
+
+.char-box {
+  cursor: pointer;
 }
 
 .padding-right {

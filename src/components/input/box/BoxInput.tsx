@@ -17,27 +17,16 @@ const BoxInput: React.FC = () => {
       reading.split("").map((kana, idx) => ({
         idx: idx,
         kana: kana,
-        clicked: idx % 2 === 0 ? true : false,
+        clicked: false,
       }))
     );
   }, [reading]);
 
   return (
     <div>
-      <div>
-        {boxes
-          .filter(({ clicked }) => clicked)
-          .map(({ idx, kana }) => (
-            <CharBox key={idx} kana={kana} />
-          ))}
-      </div>
-      <div>
-        {boxes
-          .filter(({ clicked }) => !clicked)
-          .map(({ idx, kana }) => (
-            <CharBox key={idx} kana={kana} />
-          ))}
-      </div>
+      {boxes.map(({ idx, kana }) => (
+        <CharBox key={idx} kana={kana} />
+      ))}
     </div>
   );
 };

@@ -5,8 +5,7 @@ const Footer: React.FC = () => {
     <div id="footer" className="flex-center">
       <h1 id="title">Darrik Houck</h1>
       <div className="padding-right">
-        <p className="text-normal">darrikwh@gmail.com</p>
-        <p className="text-normal"></p>
+        <p className="text-eng">darrikwh@gmail.com</p>
       </div>
       <Nav />
     </div>
