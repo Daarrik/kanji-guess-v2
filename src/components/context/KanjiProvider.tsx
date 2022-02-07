@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 interface KanjiContextType {
   kanji: string;
   reading: string;
-  newKanji?: () => void;
+  newKanji: () => void;
 }
 
 export const KanjiContext = createContext<KanjiContextType>({

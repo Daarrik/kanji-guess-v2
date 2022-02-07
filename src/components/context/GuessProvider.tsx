@@ -2,9 +2,9 @@ import { createContext, useState } from "react";
 
 interface GuessContextType {
   guess: string;
-  setGuess: (newGuess: string) => void;
+  setGuess: React.Dispatch<React.SetStateAction<string>>;
   guessed: boolean;
-  setGuessed: (isGuessed: boolean) => void;
+  setGuessed: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const GuessContext = createContext<GuessContextType>({
@@ -15,8 +15,8 @@ export const GuessContext = createContext<GuessContextType>({
 });
 
 const GuessProvider: React.FC = ({ children }) => {
-  const [guessed, setGuessed] = useState(false);
   const [guess, setGuess] = useState("");
+  const [guessed, setGuessed] = useState(false);
 
   return (
     <GuessContext.Provider value={{ guessed, guess, setGuess, setGuessed }}>

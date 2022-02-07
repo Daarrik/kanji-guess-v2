@@ -8,13 +8,12 @@ interface CheckProps {
 
 const Check: React.FC<CheckProps> = ({ isText }) => {
   const { reading } = useContext(KanjiContext);
-  const { guess, setGuessed } = useContext(GuessContext);
+  const { guess, setGuess, setGuessed } = useContext(GuessContext);
 
   return (
     <button
       onClick={() => {
         console.log(guess === reading);
-        console.log(isText);
       }}
     >
       test

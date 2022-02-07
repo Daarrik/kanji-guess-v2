@@ -1,28 +1,15 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { KanjiContext } from "./context/KanjiProvider";
 import TextInput from "./input/TextInput";
-import BoxInput from "./input/box/BoxInput";
-import { GuessContext } from "./context/GuessProvider";
 
 const Container: React.FC = () => {
-  const [textInput, setTextInput] = useState(true);
-  const { kanji, reading, newKanji } = useContext(KanjiContext);
-  const { guess, setGuess } = useContext(GuessContext);
+  const { kanji, newKanji } = useContext(KanjiContext);
 
   return (
     <div id="container">
       <h1 className="text-jp">{kanji}</h1>
-      <p className="text-jp">{reading}</p>
-      {textInput ? <TextInput /> : <BoxInput />}
+      <TextInput />
       <button onClick={newKanji}>fake kanji fetch button</button>
-      <button
-        onClick={() => {
-          setTextInput(!textInput);
-          setGuess("");
-        }}
-      >
-        switch
-      </button>
     </div>
   );
 };
