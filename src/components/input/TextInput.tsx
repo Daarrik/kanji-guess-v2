@@ -12,7 +12,7 @@ const TextInput: React.FC = () => {
         value={guess}
         onChange={(e) => setGuess(e.target.value)}
       />
-      <Check isText />
+      <Check />
     </div>
   );
 };

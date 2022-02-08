@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { GuessContext } from "./context/GuessProvider";
 import { KanjiContext } from "./context/KanjiProvider";
+import { GuessContext } from "./context/GuessProvider";
 import TextInput from "./input/TextInput";
 
 const Container: React.FC = () => {
