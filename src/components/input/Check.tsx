@@ -16,7 +16,7 @@ const Check: React.FC = () => {
     }
   };
 
-  return <button onClick={handleGuess}>test</button>;
+  return <button onClick={handleGuess}>Check Guess</button>;
 };
 
 export default Check;
