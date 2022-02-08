@@ -47,7 +47,7 @@ a {
   font-family: var(--eng-font);
 }
 
-#container {
+#game {
   display: flex;
   align-items: center;
   flex-direction: column;

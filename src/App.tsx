@@ -1,6 +1,6 @@
 import KanjiProvider from "./components/context/KanjiProvider";
 import GuessProvider from "./components/context/GuessProvider";
-import Container from "./components/Container";
+import Game from "./components/Game";
 import Footer from "./components/Footer";
 
 const App: React.FC = () => {
@@ -9,7 +9,7 @@ const App: React.FC = () => {
       <KanjiProvider>
         <GuessProvider>
           <main id="main" className="flex-center">
-            <Container />
+            <Game />
           </main>
         </GuessProvider>
       </KanjiProvider>

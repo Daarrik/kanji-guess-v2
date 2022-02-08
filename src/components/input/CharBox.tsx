@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { GuessContext } from "../context/GuessProvider";
 
 interface CharBoxProps {
