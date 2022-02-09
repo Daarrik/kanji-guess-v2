@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { GuessContext } from "./components/context/GuessProvider";
 import Game from "./components/Game";
-import Results from "./components/context/Results";
+import Results from "./components/Results";
 import Footer from "./components/Footer";
 
 const App: React.FC = () => {
@@ -12,7 +12,6 @@ const App: React.FC = () => {
       <main id="main" className="flex-center">
         {!guessed ? <Game /> : <Results />}
       </main>
-
       <Footer />
     </div>
   );
