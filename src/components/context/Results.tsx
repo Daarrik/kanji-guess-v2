@@ -4,9 +4,20 @@ import { KanjiContext } from "./KanjiProvider";
 
 const Results: React.FC = () => {
   const { reading } = useContext(KanjiContext);
-  const { guess } = useContext(GuessContext);
+  const { guess, setGuess, setGuessed } = useContext(GuessContext);
 
-  return <div>{reading === guess ? "correct" : "incorrect"}</div>;
+  const handleClick = (retry: boolean): void => {
+    setGuessed(false);
+    setGuess("");
+  };
+
+  return (
+    <div>
+      <h1 className="text-eng">{reading === guess ? "correct" : "incorrect"}</h1>
+      <button onClick={() => handleClick(true)}>Retry</button>
+      <button>Next</button>
+    </div>
+  );
 };
 
 export default Results;
