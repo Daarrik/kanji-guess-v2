@@ -1,3 +1,1 @@
-export const fetchKanji = async () => {
-  
-}
+export const fetchKanji = async () => {};

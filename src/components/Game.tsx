@@ -1,13 +1,12 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useContext } from "react";
 import { KanjiContext } from "./context/KanjiProvider";
-import { GuessContext } from "./context/GuessProvider";
 import TextInput from "./input/TextInput";
 import BoxInput from "./input/BoxInput";
 import Submit from "./input/Submit";
 
 const Game: React.FC = () => {
   const [textInput, setTextInput] = useState(true);
-  const { kanji, reading } = useContext(KanjiContext);
+  const { kanji } = useContext(KanjiContext);
 
   return (
     <div id="game">
