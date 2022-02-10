@@ -15,10 +15,6 @@ const BoxInput: React.FC = () => {
     );
   }, [reading]);
 
-  useEffect(() => {
-    console.log(`Guess: ${guess}`);
-  });
-
   return (
     <div>
       <p>{guess}</p>

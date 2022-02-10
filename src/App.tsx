@@ -10,6 +10,7 @@ const App: React.FC = () => {
   return (
     <div>
       <main id="main" className="flex-center">
+        {/* animation for components */}
         {!guessed ? <Game /> : <Results />}
       </main>
       <Footer />

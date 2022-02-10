@@ -13,6 +13,7 @@ const CharBox: React.FC<CharBoxProps> = ({ kana }) => {
     if (!clicked) {
       setGuess((oldGuess) => oldGuess + kana);
     } else {
+      // Find way to remove guess without using .replace() for instances like とうとう
       setGuess((oldGuess) => oldGuess.replace(kana, ""));
     }
     setClicked(!clicked);
