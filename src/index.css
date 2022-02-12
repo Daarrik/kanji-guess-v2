@@ -1,4 +1,3 @@
-/* reorganize, this is getting hard to maintain */
 :root {
   --nav-height: 80px;
   --full-width: 800px;
@@ -32,12 +31,6 @@ h2 {
 a {
   color: var(--text-color);
   text-decoration: none;
-}
-
-.flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .en-font {

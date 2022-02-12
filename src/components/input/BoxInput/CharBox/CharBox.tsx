@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { GuessContext } from "../../context/GuessProvider";
+import { GuessContext } from "../../../context/GuessProvider";
 import "./CharBox.css";
 
 interface CharBoxProps {
