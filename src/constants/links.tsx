@@ -1,21 +1,21 @@
-import { ReactComponent as GithubIcon } from "../icons/github.svg";
-import { ReactComponent as LinkedinIcon } from "../icons/linkedin.svg";
+import { ReactComponent as GithubSVG } from "../icons/github.svg";
+import { ReactComponent as LinkedinSVG } from "../icons/linkedin.svg";
 
 interface NavLink {
   name: string;
   url: string;
-  icon: React.ReactElement;
+  svg: React.ReactElement;
 }
 
 export const links: Array<NavLink> = [
   {
     name: "github",
     url: "https://github.com/Daarrik",
-    icon: <GithubIcon />,
+    svg: <GithubSVG />,
   },
   {
     name: "linkedin",
     url: "https://linkedin.com/in/Daarrik",
-    icon: <LinkedinIcon />,
+    svg: <LinkedinSVG />,
   },
 ];

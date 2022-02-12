@@ -1,0 +1,10 @@
+.game {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.kanji {
+  /* placeholder for non-empty rule */
+  font-size: 10em;
+}

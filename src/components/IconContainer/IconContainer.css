@@ -1,0 +1,6 @@
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(var(--nav-height) * 0.8);
+}

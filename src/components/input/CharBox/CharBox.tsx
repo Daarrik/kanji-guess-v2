@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
-import { GuessContext } from "../context/GuessProvider";
+import { GuessContext } from "../../context/GuessProvider";
+import "./CharBox.css";
 
 interface CharBoxProps {
   kana: string;
@@ -20,7 +21,7 @@ const CharBox: React.FC<CharBoxProps> = ({ kana }) => {
   };
 
   return (
-    <button className="char-box text-jp" onClick={handleClick}>
+    <button className="char-box jp-font" onClick={handleClick}>
       {kana}
     </button>
   );

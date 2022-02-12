@@ -4,7 +4,7 @@
   --full-width: 800px;
   --bg: #001220;
   --text-color: #dadce1;
-  --eng-font: "Zen Kaku Gothic Antique", sans-serif;
+  --en-font: "Zen Kaku Gothic Antique", sans-serif;
   --jp-font: "Noto Sans JP", sans-serif;
 }
 
@@ -40,60 +40,10 @@ a {
   justify-content: center;
 }
 
-#title {
-  font-family: var(--eng-font);
+.en-font {
+  font-family: var(--en-font);
 }
 
-#game {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-#footer {
-  position: absolute;
-  display: flex;
-  justify-content: space-between;
-  min-width: var(--full-width);
-  bottom: 0;
-  height: var(--nav-height);
-}
-
-#nav {
-  height: calc(var(--nav-height) * 0.8);
-}
-
-.navitem {
-  width: calc(var(--nav-height) * 0.7);
-  height: calc(var(--nav-height) * 0.7);
-  border-radius: 50%;
-  color: var(--text-color);
-  background-color: var(--bg);
-  transition: 250ms;
-}
-
-.navitem:hover {
-  filter: brightness(1.2);
-}
-
-.navitem svg {
-  width: calc(var(--nav-height) * 0.5);
-  height: calc(var(--nav-height) * 0.5);
-  fill: var(--text-color);
-}
-
-.text-eng {
-  font-family: var(--eng-font);
-}
-
-.text-jp {
+.jp-font {
   font-family: var(--jp-font);
-}
-
-.char-box {
-  cursor: pointer;
-}
-
-.padding-right {
-  padding-right: 250px;
 }

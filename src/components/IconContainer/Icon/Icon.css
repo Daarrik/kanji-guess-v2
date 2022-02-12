@@ -1,0 +1,21 @@
+.navitem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--nav-height) * 0.7);
+  height: calc(var(--nav-height) * 0.7);
+  background-color: var(--bg);
+  border-radius: 50%;
+  color: var(--text-color);
+  transition: 250ms;
+}
+
+.navitem:hover {
+  filter: brightness(1.2);
+}
+
+.navitem svg {
+  width: calc(var(--nav-height) * 0.5);
+  height: calc(var(--nav-height) * 0.5);
+  fill: var(--text-color);
+}

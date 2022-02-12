@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
-import { GuessContext } from "../context/GuessProvider";
-import { KanjiContext } from "../context/KanjiProvider";
-import CharBox from "./CharBox";
+import { GuessContext } from "../../context/GuessProvider";
+import { KanjiContext } from "../../context/KanjiProvider";
+import CharBox from "../CharBox/CharBox";
 
 const BoxInput: React.FC = () => {
   const { reading } = useContext(KanjiContext);
@@ -16,7 +16,7 @@ const BoxInput: React.FC = () => {
   }, [reading]);
 
   return (
-    <div>
+    <div className="box-input">
       <p>{guess}</p>
       {boxes}
     </div>

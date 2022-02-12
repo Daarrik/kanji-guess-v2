@@ -1,0 +1,13 @@
+.footer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--full-width);
+  bottom: 0;
+  height: var(--nav-height);
+}
+
+.padding-right {
+  padding-right: 250px;
+}

@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { GuessContext } from "./components/context/GuessProvider";
-import Game from "./components/Game";
+import Game from "./components/Game/Game";
 import Results from "./components/Results";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 
 const App: React.FC = () => {
   const { guessed } = useContext(GuessContext);
