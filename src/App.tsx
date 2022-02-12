@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { GuessContext } from "./components/context/GuessProvider";
+import { GuessContext } from "./components/ContextProviders/GuessProvider";
 import Game from "./components/Game/Game";
-import Results from "./components/Results";
+import Results from "./components/Results/Results";
 // import Footer from "./components/Footer/Footer";
 // Readd Footer when rest of app is done
 

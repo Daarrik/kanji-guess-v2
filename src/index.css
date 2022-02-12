@@ -33,6 +33,12 @@ a {
   text-decoration: none;
 }
 
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .en-font {
   font-family: var(--en-font);
 }
