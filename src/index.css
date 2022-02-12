@@ -2,8 +2,8 @@
 :root {
   --nav-height: 80px;
   --full-width: 800px;
-  --bg: #001220;
-  --text-color: #dadce1;
+  --bg: #dadce1;
+  --text-color: #001220;
   --en-font: "Zen Kaku Gothic Antique", sans-serif;
   --jp-font: "Noto Sans JP", sans-serif;
 }
