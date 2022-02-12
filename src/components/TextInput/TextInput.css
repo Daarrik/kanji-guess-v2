@@ -1,0 +1,14 @@
+.input {
+  /* position: absolute; */
+  width: 200px;
+  min-height: 50px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.input:focus {
+  border: 1px solid var(--text-color);
+}
