@@ -1,5 +1,5 @@
 import { links } from "../../constants/links";
-import Icon from "./Icon/Icon";
+import Icon from "../Icon/Icon";
 import "./IconContainer.css";
 
 const IconContainer: React.FC = () => {
