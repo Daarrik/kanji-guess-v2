@@ -5,8 +5,8 @@ import "./IconContainer.css";
 const IconContainer: React.FC = () => {
   return (
     <div className="icon-container">
-      {links.map(({ name, url, svg }) => (
-        <Icon key={name} url={url} svg={svg} />
+      {links.map((payload) => (
+        <Icon key={payload.name} {...payload} />
       ))}
     </div>
   );

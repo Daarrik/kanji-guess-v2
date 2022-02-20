@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(var(--nav-height) * 0.7);
-  height: calc(var(--nav-height) * 0.7);
+  width: calc(var(--nav-height) * 0.6);
+  height: calc(var(--nav-height) * 0.6);
   background-color: var(--bg);
   border-radius: 50%;
   color: var(--text-color);
