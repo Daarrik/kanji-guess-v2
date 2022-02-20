@@ -1,5 +1,5 @@
 :root {
-  --nav-height: 80px;
+  --header-height: 80px;
   --full-width: 800px;
   --bg: #dadce1;
   --text-color: #001220;
@@ -23,15 +23,9 @@ body {
   white-space: nowrap;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 p,
 h1,
 h2 {
-  margin: 0;
   color: var(--text-color);
   cursor: default;
 }
@@ -39,12 +33,6 @@ h2 {
 a {
   color: var(--text-color);
   text-decoration: none;
-}
-
-.flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .en-font {
@@ -61,6 +49,6 @@ a {
   left: -5%;
   opacity: 0.1;
   font-size: 50em;
-  /* text-overflow: clip; */
+  text-overflow: clip;
   z-index: -1;
 }
