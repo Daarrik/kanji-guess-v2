@@ -7,12 +7,20 @@
   --jp-font: "Noto Sans JP", sans-serif;
 }
 
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: var(--full-width);
-  margin: auto;
   background-color: var(--bg);
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 code {
@@ -45,4 +53,14 @@ a {
 
 .jp-font {
   font-family: var(--jp-font);
+}
+
+.kanji-backdrop {
+  position: absolute;
+  top: 0;
+  left: -5%;
+  opacity: 0.1;
+  font-size: 50em;
+  /* text-overflow: clip; */
+  z-index: -1;
 }
