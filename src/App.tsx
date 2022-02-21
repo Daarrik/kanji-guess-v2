@@ -4,7 +4,6 @@ import { GuessContext } from "./components/ContextProviders/GuessProvider";
 import Game from "./components/Game/Game";
 import Results from "./components/Results/Results";
 import Footer from "./components/Footer/Footer";
-// Readd Footer when rest of app is done
 
 const App: React.FC = () => {
   const { kanji } = useContext(KanjiContext);
@@ -13,11 +12,10 @@ const App: React.FC = () => {
   return (
     <div>
       <main>
-        {/* animation for components */}
         {!guessed ? <Game /> : <Results />}
+        {/* <Footer /> */}
       </main>
       <h1 className="kanji-backdrop jp-font">{kanji}</h1>
-      {/* <Footer /> */}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { KanjiContext } from "../ContextProviders/KanjiProvider";
 import { GuessContext } from "../ContextProviders/GuessProvider";
 import CharBox from "../CharBox/CharBox";
