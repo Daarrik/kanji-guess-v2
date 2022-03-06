@@ -4,10 +4,9 @@ import { GuessContext } from "../ContextProviders/GuessProvider";
 import CharBox from "../CharBox/CharBox";
 
 const BoxInput: React.FC = () => {
+  const [boxes, setBoxes] = useState<React.ReactElement[] | null>(null);
   const { reading } = useContext(KanjiContext);
   const { guess } = useContext(GuessContext);
-
-  const [boxes, setBoxes] = useState<React.ReactElement[] | null>(null);
 
   useEffect(() => {
     setBoxes(
