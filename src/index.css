@@ -1,3 +1,11 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --header-height: 80px;
   --full-width: 800px;
@@ -5,14 +13,6 @@
   --text-color: #001220;
   --en-font: "Zen Kaku Gothic Antique", sans-serif;
   --jp-font: "Noto Sans JP", sans-serif;
-}
-
-*,
-*:before,
-*:after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 body {
