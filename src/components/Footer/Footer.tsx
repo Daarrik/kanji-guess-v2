@@ -1,4 +1,4 @@
-import IconContainer from "../IconContainer/IconContainer";
+import { IconContainer } from "../";
 import "./Footer.css";
 
 const Footer: React.FC = () => {

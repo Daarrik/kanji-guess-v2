@@ -2,8 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import KanjiProvider from "./components/ContextProviders/KanjiProvider";
-import GuessProvider from "./components/ContextProviders/GuessProvider";
+import { KanjiProvider, GuessProvider } from "./components/";
 
 ReactDOM.render(
   <React.StrictMode>

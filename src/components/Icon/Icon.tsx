@@ -1,11 +1,11 @@
 import "./Icon.css";
 
-interface Icon {
+interface IconProps {
   url: string;
   svg: React.ReactElement;
 }
 
-const Icon: React.FC<Icon> = ({ url, svg }) => {
+const Icon: React.FC<IconProps> = ({ url, svg }) => {
   return (
     <a className="navitem" href={url} target="_blank" rel="noopener noreferrer">
       {svg}

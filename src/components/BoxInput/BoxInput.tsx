@@ -1,7 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { KanjiContext } from "../ContextProviders/KanjiProvider";
-import { GuessContext } from "../ContextProviders/GuessProvider";
-import CharBox from "../CharBox/CharBox";
+import { CharBox, KanjiContext, GuessContext } from "../";
 
 const BoxInput: React.FC = () => {
   const [boxes, setBoxes] = useState<React.ReactElement[] | null>(null);

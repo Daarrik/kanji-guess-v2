@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GuessContext } from "../ContextProviders/GuessProvider";
+import { GuessContext } from "../";
 
 const Submit: React.FC = () => {
   const { setGuessed } = useContext(GuessContext);

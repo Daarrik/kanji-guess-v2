@@ -1,6 +1,5 @@
 import { useContext } from "react";
-import { KanjiContext } from "../ContextProviders/KanjiProvider";
-import { GuessContext } from "../ContextProviders/GuessProvider";
+import { KanjiContext, GuessContext } from "../";
 import "./Results.css";
 
 const Results: React.FC = () => {

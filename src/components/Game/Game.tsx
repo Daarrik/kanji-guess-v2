@@ -1,9 +1,5 @@
 import { useState, useContext } from "react";
-import { KanjiContext } from "../ContextProviders/KanjiProvider";
-import { GuessContext } from "../ContextProviders/GuessProvider";
-import TextInput from "../TextInput/TextInput";
-import BoxInput from "../BoxInput/BoxInput";
-import Submit from "../Submit/Submit";
+import { BoxInput, Submit, TextInput, KanjiContext, GuessContext } from "../";
 import "./Game.css";
 
 const Game: React.FC = () => {
