@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 
+// Consider changing this to WordProvider/WordContext
 interface KanjiContextType {
   kanji: string;
   reading: string;
