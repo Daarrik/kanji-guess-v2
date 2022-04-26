@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { KanjiContext } from "../ContextProviders/KanjiProvider";
+import { KanjiContext } from "../";
 
 const Details: React.FC = () => {
   const { kanji } = useContext(KanjiContext);
