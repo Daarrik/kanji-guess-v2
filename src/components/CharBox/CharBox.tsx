@@ -6,7 +6,7 @@ interface CharBoxProps {
   kana: string;
 }
 
-const CharBox: React.FC<CharBoxProps> = ({ kana }) => {
+const CharBox = ({ kana }: CharBoxProps) => {
   const [clicked, setClicked] = useState(false);
   const { setGuess } = useContext(GuessContext);
 

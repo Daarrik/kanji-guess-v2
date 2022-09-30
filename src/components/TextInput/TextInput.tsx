@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { GuessContext } from "../";
 import "./TextInput.css";
 
-const TextInput: React.FC = () => {
+const TextInput = () => {
   const { guess, setGuess } = useContext(GuessContext);
 
   return (

@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { KanjiContext } from "../";
 
-const Details: React.FC = () => {
+const Details = () => {
   const { kanji } = useContext(KanjiContext);
   const [info, setInfo] = useState<[]>([]);
 

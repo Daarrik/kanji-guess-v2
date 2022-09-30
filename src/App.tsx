@@ -7,7 +7,7 @@ import {
   Footer,
 } from "./components";
 
-const App: React.FC = () => {
+const App = () => {
   const { kanji } = useContext(KanjiContext);
   const { guessed } = useContext(GuessContext);
 

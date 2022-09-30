@@ -14,7 +14,7 @@ export const GuessContext = createContext<GuessContextType>({
   setGuessed: () => {},
 });
 
-const GuessProvider: React.FC = ({ children }) => {
+const GuessProvider = ({ children }: { children: React.ReactNode }) => {
   const [guess, setGuess] = useState("");
   const [guessed, setGuessed] = useState(false);
 

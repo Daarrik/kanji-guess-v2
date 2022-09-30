@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { KanjiContext, GuessContext } from "../";
 import "./Results.css";
 
-const Results: React.FC = () => {
+const Results = () => {
   const { reading, newKanji } = useContext(KanjiContext);
   const { guess, setGuess, setGuessed } = useContext(GuessContext);
 

@@ -2,7 +2,7 @@ import { links } from "../../constants/links";
 import { Icon } from "../";
 import "./IconContainer.css";
 
-const IconContainer: React.FC = () => {
+const IconContainer = () => {
   return (
     <div className="icon-container">
       {links.map((link) => (

@@ -7,6 +7,7 @@ interface NavLink {
   svg: React.ReactElement;
 }
 
+// Consider: links: NavLink[]
 export const links: Array<NavLink> = [
   {
     name: "github",

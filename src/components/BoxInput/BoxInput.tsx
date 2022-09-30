@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { CharBox, KanjiContext, GuessContext } from "../";
 
-const BoxInput: React.FC = () => {
+const BoxInput = () => {
   const [boxes, setBoxes] = useState<React.ReactElement[] | null>(null);
   const { reading } = useContext(KanjiContext);
   const { guess } = useContext(GuessContext);

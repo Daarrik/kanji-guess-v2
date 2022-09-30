@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 // Consider changing this to WordProvider/WordContext
 interface KanjiContextType {
@@ -13,7 +13,7 @@ export const KanjiContext = createContext<KanjiContextType>({
   newKanji: () => {},
 });
 
-const KanjiProvider: React.FC = ({ children }) => {
+const KanjiProvider = ({ children }: { children: React.ReactNode }) => {
   const [kanji, setKanji] = useState("漢字");
   const [reading, setReading] = useState("かんじ");
 

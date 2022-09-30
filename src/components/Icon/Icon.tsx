@@ -5,7 +5,7 @@ interface IconProps {
   svg: React.ReactElement;
 }
 
-const Icon: React.FC<IconProps> = ({ url, svg }) => {
+const Icon = ({ url, svg }: IconProps) => {
   return (
     <a className="navitem" href={url} target="_blank" rel="noopener noreferrer">
       {svg}

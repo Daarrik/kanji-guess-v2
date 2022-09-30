@@ -1,7 +1,7 @@
 import { IconContainer } from "../";
 import "./Footer.css";
 
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
     <div className="footer">
       <h1 className="en-font">Darrik Houck</h1>

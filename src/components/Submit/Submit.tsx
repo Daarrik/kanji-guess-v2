@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { GuessContext } from "../";
 
-const Submit: React.FC = () => {
+const Submit = () => {
   const { setGuessed } = useContext(GuessContext);
 
   return <button onClick={() => setGuessed(true)}>Submit Guess</button>;
