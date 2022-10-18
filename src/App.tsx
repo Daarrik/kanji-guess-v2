@@ -15,7 +15,7 @@ const App = () => {
     <div>
       <main>
         {!guessed ? <Game /> : <Results />}
-        {/* <Footer /> */}
+        <Footer />
       </main>
       <h1 className="kanji-backdrop jp-font">{kanji}</h1>
     </div>

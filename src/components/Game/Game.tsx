@@ -3,7 +3,8 @@ import { BoxInput, Submit, TextInput, KanjiContext, GuessContext } from "../";
 import "./Game.css";
 
 const Game = () => {
-  const [textInput, setTextInput] = useState(true);
+  const [textInput, setTextInput] = useState(false);
+  const [fetching, isFetching] = useState(false);
   const { kanji } = useContext(KanjiContext);
   const { setGuess } = useContext(GuessContext);
 
