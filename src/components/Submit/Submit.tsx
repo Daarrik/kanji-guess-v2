@@ -7,7 +7,7 @@ const Submit = () => {
 
   return (
     <button className="submit-button en-font" onClick={() => setGuessed(true)}>
-      Submit Guess
+      submit
     </button>
   );
 };

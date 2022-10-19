@@ -34,13 +34,26 @@ const move = (
   return result;
 };
 
-const getListStyle = (isDraggingOver: boolean) => ({
-  background: isDraggingOver ? "lightblue" : "var(--bg)",
+const optionBoxStyle = {
   display: "flex",
   border: "2px solid var(--text-color)",
   marginTop: "5px",
   padding: "5px",
   minWidth: "50px",
+  height: "50px",
+  alignItems: "center",
+  justifyContent: "center",
+  overflow: "hidden",
+};
+
+const selectedBoxStyle = (isDraggingOver: boolean) => ({
+  background: isDraggingOver ? "lightblue" : "none",
+  display: "flex",
+  border: "none",
+  borderBottom: "2px solid var(--text-color)",
+  marginTop: "20px",
+  padding: "5px",
+  minWidth: "75px",
   height: "50px",
   alignItems: "center",
   justifyContent: "center",
@@ -66,8 +79,6 @@ const BoxInput = () => {
       .map((char, idx) => ({ id: idx.toString(), char: char })),
     selected: [],
   });
-
-  
 
   useEffect(() => {
     console.log(guess);
@@ -114,10 +125,11 @@ const BoxInput = () => {
     <div className="box-input">
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="items" direction="horizontal">
-          {(provided, snapshot) => (
-            <div className="items"
+          {(provided) => (
+            <div
+              className="items"
               ref={provided.innerRef}
-              style={getListStyle(snapshot.isDraggingOver)}
+              style={optionBoxStyle}
             >
               {state.items.map((item, idx) => (
                 <Draggable key={item.id} draggableId={item.id} index={idx}>
@@ -137,11 +149,12 @@ const BoxInput = () => {
             </div>
           )}
         </Droppable>
+        <h4 className="en-font">drag</h4>
         <Droppable droppableId="selected" direction="horizontal">
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}
-              style={getListStyle(snapshot.isDraggingOver)}
+              style={selectedBoxStyle(snapshot.isDraggingOver)}
             >
               {state.selected.map((item, idx) => (
                 <Draggable key={item.id} draggableId={item.id} index={idx}>
@@ -161,6 +174,7 @@ const BoxInput = () => {
             </div>
           )}
         </Droppable>
+        <h4 className="en-font">your guess</h4>
       </DragDropContext>
     </div>
   );

@@ -9,9 +9,9 @@
 
 .submit-button:hover {
   box-shadow: inset 0px -50px var(--text-color);
-  color: var(--bg)
+  color: var(--bg);
 }
 
-.submit-button:active{
+.submit-button:active {
   filter: brightness(1.5);
 }

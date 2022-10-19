@@ -19,7 +19,7 @@ const KanjiProvider = ({ children }: { children: React.ReactNode }) => {
   const [reading, setReading] = useState("かんじ");
 
   const newKanji = (): void => {
-    const newEntry = kanjiList[Math.floor(Math.random()*kanjiList.length)];
+    const newEntry = kanjiList[Math.floor(Math.random() * kanjiList.length)];
     const newKanji = newEntry["kanji"];
     const newReading = newEntry["reading"];
 
