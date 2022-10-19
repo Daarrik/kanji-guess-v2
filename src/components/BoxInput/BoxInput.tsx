@@ -1,8 +1,9 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { CharBox, KanjiContext, GuessContext } from "../";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { DraggableLocation, DropResult } from "react-beautiful-dnd";
 
-const reorder = (list: any, startIndex: number, endIndex: number) => {
+const reorder = (list: Array<string>, startIndex: number, endIndex: number) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
@@ -10,7 +11,7 @@ const reorder = (list: any, startIndex: number, endIndex: number) => {
   return result;
 };
 
-const move = (source: any, destination: any, droppableSource: any, droppableDestination: any) => {
+const move = (source: Array<string>, destination: Array<string>, droppableSource: DraggableLocation, droppableDestination: DraggableLocation) => {
   const sourceClone = Array.from(source);
   const destClone = Array.from(destination);
   const [removed] = sourceClone.splice(droppableSource.index, 1);
@@ -33,65 +34,78 @@ const getListStyle = (isDraggingOver: boolean, isEmpty: boolean) => ({
   minHeight: isEmpty ? "45px" : "NaN"
 });
 
+interface StateType {
+  items: string[]; 
+  selected: string[];
+}
+
+interface NewStateType {
+  items?: string[]; 
+  selected?: string[];
+}
+
 const BoxInput = () => {
   const { reading } = useContext(KanjiContext);
-  const { guess } = useContext(GuessContext);
+  const { guess, setGuess } = useContext(GuessContext);
   
-  const [state, setState] = useState<{items: string[], selected: string[]}>({items: reading.split(''), selected: []});
+  const [state, setState] = useState<StateType>({items: reading.split(''), selected: []});
+
+  useEffect(() => {
+    setGuess(state.selected.join(''));
+  }, [state])
+
+  useEffect(() => {
+    console.log(guess)
+  }, [guess])
   
-  const kanaList: any = {
-    droppable: "items",
-    droppable2: "selected",
-  };
-  const getList = (id: any) => kanaList[id];
+  const getList = (id: keyof StateType) => state[id];
   
-  const onDragEnd = (result: any) => {
+  const onDragEnd = (result: DropResult) => {
+
     const { source, destination } = result;
 
     // dropped outside the list
     if (!destination) {
       return;
     }
-
+    
     if (source.droppableId === destination.droppableId) {
-      const items: any = reorder(
+      const items: string[] = reorder(
+        // @ts-ignore
         getList(source.droppableId),
         source.index,
         destination.index
       );
-
-      let state = { items };
-
-      if (source.droppableId === "droppable2") {
-        setState({...state, selected: items})
-      }
+      
+    setState({...state, [source.droppableId]: items});
+    if (source.droppableId === "selected") {
+      setGuess(items.join(''))
+    }
     } else {
       const result = move(
+        // @ts-ignore
         getList(source.droppableId),
+        // @ts-ignore
         getList(destination.droppableId),
         source,
         destination
       );
-      if (result.droppable) {
-        setState({ ...state, items: result.droppable });
-      }
-      if (result.droppable2) {
-        setState({ ...state, selected: result.droppable2 });
-      }
+      setState({ items: result.items, selected: result.selected });
+      setGuess(result.selected.join(''))
     }
   };
 
   return (
     <div className="box-input">
       <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="droppable" direction="horizontal">
+        <Droppable droppableId="items" direction="horizontal">
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}
               style={getListStyle(snapshot.isDraggingOver, false)}
             >
               {state.items.map((item, idx) => (
-                <Draggable key={idx} draggableId={item} index={idx}>
+                <Draggable key={idx} draggableId={item+idx} index={idx}>
                   {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}
@@ -107,14 +121,14 @@ const BoxInput = () => {
             </div>
           )}
         </Droppable>
-        <Droppable droppableId="droppable2" direction="horizontal">
+        <Droppable droppableId="selected" direction="horizontal">
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}
               style={getListStyle(snapshot.isDraggingOver, false)}
             >
               {state.selected.map((item, idx) => (
-                <Draggable key={idx} draggableId={item} index={idx}>
+                <Draggable key={idx} draggableId={item+idx} index={idx}>
                   {(provided, snapshot) => (
                     <div
                       ref={provided.innerRef}
@@ -134,7 +148,6 @@ const BoxInput = () => {
             </div>
           )}
         </Droppable>
-        {reading.split("").map((kana, idx) => <CharBox key={idx} kana={kana} />)}
       </DragDropContext>
     </div>
   );
