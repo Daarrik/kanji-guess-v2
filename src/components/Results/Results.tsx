@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { KanjiContext, GuessContext } from "../";
 import "./Results.css";
 
+// `https://tatoeba.org/en/api_v0/search?from=jpn&query=${kanji}to=eng`
 const Results = () => {
   const { reading, newKanji } = useContext(KanjiContext);
   const { guess, setGuess, setGuessed } = useContext(GuessContext);
