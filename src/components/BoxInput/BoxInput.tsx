@@ -1,11 +1,14 @@
 import { useState, useEffect, useContext } from "react";
-import { CharBox, KanjiContext, GuessContext } from "../";
+import { KanjiContext, GuessContext } from "../";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { DraggableLocation, DropResult } from "react-beautiful-dnd";
 import "./BoxInput.css";
-import { readConfigFile } from "typescript";
 
-const reorder = (list: ItemType[], startIndex: number, endIndex: number) => {
+const reorder = (
+  list: Array<ItemType>,
+  startIndex: number,
+  endIndex: number
+) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
@@ -13,7 +16,12 @@ const reorder = (list: ItemType[], startIndex: number, endIndex: number) => {
   return result;
 };
 
-const move = (source: Array<string>, destination: Array<string>, droppableSource: DraggableLocation, droppableDestination: DraggableLocation) => {
+const move = (
+  source: Array<string>,
+  destination: Array<string>,
+  droppableSource: DraggableLocation,
+  droppableDestination: DraggableLocation
+) => {
   const sourceClone = Array.from(source);
   const destClone = Array.from(destination);
   const [removed] = sourceClone.splice(droppableSource.index, 1);
@@ -26,11 +34,22 @@ const move = (source: Array<string>, destination: Array<string>, droppableSource
   return result;
 };
 
-const grid = 5;
+const getListStyle = (isDraggingOver: boolean) => ({
+  background: isDraggingOver ? "lightblue" : "var(--bg)",
+  display: "flex",
+  border: "2px solid var(--text-color)",
+  marginTop: "5px",
+  padding: "5px",
+  minWidth: "50px",
+  height: "50px",
+  alignItems: "center",
+  justifyContent: "center",
+  overflow: "hidden",
+});
 
 interface StateType {
-  items: ItemType[]; 
-  selected: ItemType[];
+  items: Array<ItemType>;
+  selected: Array<ItemType>;
 }
 interface ItemType {
   id: string;
@@ -40,26 +59,24 @@ interface ItemType {
 const BoxInput = () => {
   const { reading } = useContext(KanjiContext);
   const { guess, setGuess } = useContext(GuessContext);
-  
-  const [state, setState] = useState<StateType>({items: reading.split('').map((char, idx) => ({id: idx.toString(), char: char})), selected: []});
 
-  const getListStyle = (isDraggingOver: boolean) => ({
-    background: isDraggingOver ? "lightblue" : "lightgrey",
-    border: "1px solid",
-    margin: "1px",
-    display: "flex",
-    width: reading.length * 30 + reading.length + 1 + "px",
-    height: "50px",
-    alignItems: "center",
-    overflow: "auto",
+  const [state, setState] = useState<StateType>({
+    items: reading
+      .split("")
+      .map((char, idx) => ({ id: idx.toString(), char: char })),
+    selected: [],
   });
 
+  
+
   useEffect(() => {
-    console.log(guess)
-  }, [guess])
-  
-  const getList = (id: keyof StateType) => state[id];
-  
+    console.log(guess);
+  }, [guess]);
+
+  // Need to figure out indexing
+  // @ts-ignore
+  const getList = (id: string) => state[id];
+
   const onDragEnd = (result: DropResult) => {
     const { source, destination } = result;
 
@@ -67,32 +84,29 @@ const BoxInput = () => {
     if (!destination) {
       return;
     }
-    
+
     if (source.droppableId === destination.droppableId) {
-      const items: ItemType[] = reorder(
-        // @ts-ignore
+      const items: Array<ItemType> = reorder(
         getList(source.droppableId),
         source.index,
         destination.index
       );
-      
-    setState({...state, [source.droppableId]: items});
-    if (source.droppableId === "selected") {
-      const guessArray = items.map(item => item.char);
-      setGuess(guessArray.join(''))
-    }
+
+      setState({ ...state, [source.droppableId]: items });
+      if (source.droppableId === "selected") {
+        const guessArray = items.map((item) => item.char);
+        setGuess(guessArray.join(""));
+      }
     } else {
       const result: StateType = move(
-        // @ts-ignore
         getList(source.droppableId),
-        // @ts-ignore
         getList(destination.droppableId),
         source,
         destination
       );
       setState({ items: result.items, selected: result.selected });
-      const guessArray = result.selected.map(item => item.char);
-      setGuess(guessArray.join(''))
+      const guessArray = result.selected.map((item) => item.char);
+      setGuess(guessArray.join(""));
     }
   };
 
@@ -101,14 +115,15 @@ const BoxInput = () => {
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="items" direction="horizontal">
           {(provided, snapshot) => (
-            <div
+            <div className="items"
               ref={provided.innerRef}
               style={getListStyle(snapshot.isDraggingOver)}
             >
               {state.items.map((item, idx) => (
                 <Draggable key={item.id} draggableId={item.id} index={idx}>
                   {(provided) => (
-                    <div className="char-box"
+                    <div
+                      className="char-box jp-font"
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
@@ -131,7 +146,8 @@ const BoxInput = () => {
               {state.selected.map((item, idx) => (
                 <Draggable key={item.id} draggableId={item.id} index={idx}>
                   {(provided) => (
-                    <div className="char-box"
+                    <div
+                      className="char-box jp-font"
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}

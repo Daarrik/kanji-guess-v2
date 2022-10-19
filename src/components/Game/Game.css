@@ -6,7 +6,26 @@
   margin: auto;
 }
 
+.change-input {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--text-color);
+  border-radius: 50%;
+  width: calc(var(--header-height) * 0.75);
+  height: calc(var(--header-height) * 0.75);
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.change-input svg {
+  width: calc(var(--header-height) * 0.5);
+  height: calc(var(--header-height) * 0.5);
+  fill: var(--text-color);
+}
+
 .kanji {
-  /* placeholder for non-empty rule */
-  font-size: 10em;
+  font-size: 13em;
 }

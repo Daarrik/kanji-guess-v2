@@ -9,8 +9,8 @@ interface KanjiContextType {
 }
 
 export const KanjiContext = createContext<KanjiContextType>({
-  kanji: "漢字",
-  reading: "かんじ",
+  kanji: "",
+  reading: "",
   newKanji: () => {},
 });
 

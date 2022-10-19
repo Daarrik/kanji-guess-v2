@@ -1,0 +1,17 @@
+.submit-button {
+  border: 2px solid var(--text-color);
+  padding: 10px;
+  height: 50px;
+  margin: 50px;
+  font-size: large;
+  transition: 250ms;
+}
+
+.submit-button:hover {
+  box-shadow: inset 0px -50px var(--text-color);
+  color: var(--bg)
+}
+
+.submit-button:active{
+  filter: brightness(1.5);
+}
