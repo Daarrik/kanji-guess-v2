@@ -2,8 +2,10 @@ import { useState, useEffect, useContext } from "react";
 import { CharBox, KanjiContext, GuessContext } from "../";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { DraggableLocation, DropResult } from "react-beautiful-dnd";
+import "./BoxInput.css";
+import { readConfigFile } from "typescript";
 
-const reorder = (list: Array<string>, startIndex: number, endIndex: number) => {
+const reorder = (list: ItemType[], startIndex: number, endIndex: number) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
@@ -26,33 +28,31 @@ const move = (source: Array<string>, destination: Array<string>, droppableSource
 
 const grid = 5;
 
-const getListStyle = (isDraggingOver: boolean, isEmpty: boolean) => ({
-  background: isDraggingOver ? "lightblue" : "lightgrey",
-  display: "flex",
-  padding: grid,
-  overflow: "auto",
-  minHeight: isEmpty ? "45px" : "NaN"
-});
-
 interface StateType {
-  items: string[]; 
-  selected: string[];
+  items: ItemType[]; 
+  selected: ItemType[];
 }
-
-interface NewStateType {
-  items?: string[]; 
-  selected?: string[];
+interface ItemType {
+  id: string;
+  char: string;
 }
 
 const BoxInput = () => {
   const { reading } = useContext(KanjiContext);
   const { guess, setGuess } = useContext(GuessContext);
   
-  const [state, setState] = useState<StateType>({items: reading.split(''), selected: []});
+  const [state, setState] = useState<StateType>({items: reading.split('').map((char, idx) => ({id: idx.toString(), char: char})), selected: []});
 
-  useEffect(() => {
-    setGuess(state.selected.join(''));
-  }, [state])
+  const getListStyle = (isDraggingOver: boolean) => ({
+    background: isDraggingOver ? "lightblue" : "lightgrey",
+    border: "1px solid",
+    margin: "1px",
+    display: "flex",
+    width: reading.length * 30 + reading.length + 1 + "px",
+    height: "50px",
+    alignItems: "center",
+    overflow: "auto",
+  });
 
   useEffect(() => {
     console.log(guess)
@@ -61,7 +61,6 @@ const BoxInput = () => {
   const getList = (id: keyof StateType) => state[id];
   
   const onDragEnd = (result: DropResult) => {
-
     const { source, destination } = result;
 
     // dropped outside the list
@@ -70,7 +69,7 @@ const BoxInput = () => {
     }
     
     if (source.droppableId === destination.droppableId) {
-      const items: string[] = reorder(
+      const items: ItemType[] = reorder(
         // @ts-ignore
         getList(source.droppableId),
         source.index,
@@ -79,10 +78,11 @@ const BoxInput = () => {
       
     setState({...state, [source.droppableId]: items});
     if (source.droppableId === "selected") {
-      setGuess(items.join(''))
+      const guessArray = items.map(item => item.char);
+      setGuess(guessArray.join(''))
     }
     } else {
-      const result = move(
+      const result: StateType = move(
         // @ts-ignore
         getList(source.droppableId),
         // @ts-ignore
@@ -91,7 +91,8 @@ const BoxInput = () => {
         destination
       );
       setState({ items: result.items, selected: result.selected });
-      setGuess(result.selected.join(''))
+      const guessArray = result.selected.map(item => item.char);
+      setGuess(guessArray.join(''))
     }
   };
 
@@ -102,17 +103,17 @@ const BoxInput = () => {
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}
-              style={getListStyle(snapshot.isDraggingOver, false)}
+              style={getListStyle(snapshot.isDraggingOver)}
             >
               {state.items.map((item, idx) => (
-                <Draggable key={idx} draggableId={item+idx} index={idx}>
-                  {(provided, snapshot) => (
-                    <div
+                <Draggable key={item.id} draggableId={item.id} index={idx}>
+                  {(provided) => (
+                    <div className="char-box"
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      {item}
+                      {item.char}
                     </div>
                   )}
                 </Draggable>
@@ -125,21 +126,17 @@ const BoxInput = () => {
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}
-              style={getListStyle(snapshot.isDraggingOver, false)}
+              style={getListStyle(snapshot.isDraggingOver)}
             >
               {state.selected.map((item, idx) => (
-                <Draggable key={idx} draggableId={item+idx} index={idx}>
-                  {(provided, snapshot) => (
-                    <div
+                <Draggable key={item.id} draggableId={item.id} index={idx}>
+                  {(provided) => (
+                    <div className="char-box"
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
-                      // style={getItemStyle(
-                      //   snapshot.isDragging,
-                      //   provided.draggableProps.style
-                      // )}
                     >
-                      {item}
+                      {item.char}
                     </div>
                   )}
                 </Draggable>
