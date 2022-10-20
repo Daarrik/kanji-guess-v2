@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { KanjiContext, GuessContext } from "../";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { DraggableLocation, DropResult } from "react-beautiful-dnd";
@@ -17,8 +17,8 @@ const reorder = (
 };
 
 const move = (
-  source: Array<string>,
-  destination: Array<string>,
+  source: Array<ItemType>,
+  destination: Array<ItemType>,
   droppableSource: DraggableLocation,
   droppableDestination: DraggableLocation
 ) => {
@@ -34,30 +34,8 @@ const move = (
   return result;
 };
 
-const optionBoxStyle = {
-  display: "flex",
-  border: "2px solid var(--text-color)",
-  marginTop: "5px",
-  padding: "5px",
-  minWidth: "50px",
-  height: "50px",
-  alignItems: "center",
-  justifyContent: "center",
-  overflow: "hidden",
-};
-
 const selectedBoxStyle = (isDraggingOver: boolean) => ({
-  background: isDraggingOver ? "lightblue" : "none",
-  display: "flex",
-  border: "none",
-  borderBottom: "2px solid var(--text-color)",
-  marginTop: "20px",
-  padding: "5px",
-  minWidth: "75px",
-  height: "50px",
-  alignItems: "center",
-  justifyContent: "center",
-  overflow: "hidden",
+  boxShadow: isDraggingOver ? "inset 0px -50px rgba(0, 18, 32, .25)" : "none",
 });
 
 interface StateType {
@@ -70,19 +48,18 @@ interface ItemType {
 }
 
 const BoxInput = () => {
-  const { reading } = useContext(KanjiContext);
-  const { guess, setGuess } = useContext(GuessContext);
+  const { reading, incorrectGuesses } = useContext(KanjiContext);
+  const { setGuess } = useContext(GuessContext);
 
   const [state, setState] = useState<StateType>({
     items: reading
       .split("")
+      .concat(incorrectGuesses)
+      // One line scramble
+      .sort(() => .5 - Math.random())
       .map((char, idx) => ({ id: idx.toString(), char: char })),
     selected: [],
   });
-
-  useEffect(() => {
-    console.log(guess);
-  }, [guess]);
 
   // Need to figure out indexing
   // @ts-ignore
@@ -127,9 +104,8 @@ const BoxInput = () => {
         <Droppable droppableId="items" direction="horizontal">
           {(provided) => (
             <div
-              className="items"
+              className="option-box"
               ref={provided.innerRef}
-              style={optionBoxStyle}
             >
               {state.items.map((item, idx) => (
                 <Draggable key={item.id} draggableId={item.id} index={idx}>
@@ -152,7 +128,7 @@ const BoxInput = () => {
         <h4 className="en-font">drag</h4>
         <Droppable droppableId="selected" direction="horizontal">
           {(provided, snapshot) => (
-            <div
+            <div className="selected-box"
               ref={provided.innerRef}
               style={selectedBoxStyle(snapshot.isDraggingOver)}
             >
