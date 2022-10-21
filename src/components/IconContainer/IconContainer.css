@@ -1,6 +1,8 @@
 .icon-container {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(var(--header-height) * 0.8);
 }

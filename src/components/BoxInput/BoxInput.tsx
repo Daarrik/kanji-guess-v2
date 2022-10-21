@@ -1,64 +1,33 @@
 import { useState, useContext } from "react";
 import { KanjiContext, GuessContext } from "../";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { DraggableLocation, DropResult } from "react-beautiful-dnd";
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+  DropResult,
+} from "react-beautiful-dnd";
+import { move, reorder, shuffle } from "./reorder";
+import { ItemType, StateType } from "./types";
 import "./BoxInput.css";
-
-const reorder = (
-  list: Array<ItemType>,
-  startIndex: number,
-  endIndex: number
-) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
-};
-
-const move = (
-  source: Array<ItemType>,
-  destination: Array<ItemType>,
-  droppableSource: DraggableLocation,
-  droppableDestination: DraggableLocation
-) => {
-  const sourceClone = Array.from(source);
-  const destClone = Array.from(destination);
-  const [removed] = sourceClone.splice(droppableSource.index, 1);
-
-  destClone.splice(droppableDestination.index, 0, removed);
-
-  const result: any = {};
-  result[droppableSource.droppableId] = sourceClone;
-  result[droppableDestination.droppableId] = destClone;
-  return result;
-};
 
 const selectedBoxStyle = (isDraggingOver: boolean) => ({
   boxShadow: isDraggingOver ? "inset 0px -50px rgba(0, 18, 32, .25)" : "none",
 });
 
-interface StateType {
-  items: Array<ItemType>;
-  selected: Array<ItemType>;
-}
-interface ItemType {
-  id: string;
-  char: string;
-}
-
 const BoxInput = () => {
   const { reading, incorrectGuesses } = useContext(KanjiContext);
   const { setGuess } = useContext(GuessContext);
 
-  const [state, setState] = useState<StateType>({
-    items: reading
+  const [state, setState] = useState<StateType>(() => {
+    let items: ItemType[] = reading
       .split("")
       .concat(incorrectGuesses)
-      // One line scramble
-      .sort(() => .5 - Math.random())
-      .map((char, idx) => ({ id: idx.toString(), char: char })),
-    selected: [],
+      .map((char, idx) => ({ id: idx.toString(), char: char }));
+    items = shuffle(items);
+    return {
+      items,
+      selected: [],
+    };
   });
 
   // Need to figure out indexing
@@ -74,7 +43,7 @@ const BoxInput = () => {
     }
 
     if (source.droppableId === destination.droppableId) {
-      const items: Array<ItemType> = reorder(
+      const items: ItemType[] = reorder(
         getList(source.droppableId),
         source.index,
         destination.index
@@ -103,10 +72,7 @@ const BoxInput = () => {
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="items" direction="horizontal">
           {(provided) => (
-            <div
-              className="option-box"
-              ref={provided.innerRef}
-            >
+            <div className="option-box" ref={provided.innerRef}>
               {state.items.map((item, idx) => (
                 <Draggable key={item.id} draggableId={item.id} index={idx}>
                   {(provided) => (
@@ -128,7 +94,8 @@ const BoxInput = () => {
         <h4 className="en-font">drag</h4>
         <Droppable droppableId="selected" direction="horizontal">
           {(provided, snapshot) => (
-            <div className="selected-box"
+            <div
+              className="selected-box"
               ref={provided.innerRef}
               style={selectedBoxStyle(snapshot.isDraggingOver)}
             >

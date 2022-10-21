@@ -6,7 +6,7 @@ const Submit = () => {
   const { setGuessed } = useContext(GuessContext);
 
   return (
-    <button className="submit-button en-font" onClick={() => setGuessed(true)}>
+    <button className="en-font" onClick={() => setGuessed(true)}>
       submit
     </button>
   );

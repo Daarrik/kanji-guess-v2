@@ -1,13 +1,13 @@
 import "./Icon.css";
 
-interface IconProps {
+type IconProps = {
   url: string;
   svg: React.ReactElement;
-}
+};
 
 const Icon = ({ url, svg }: IconProps) => {
   return (
-    <a className="navitem" href={url} target="_blank" rel="noopener noreferrer">
+    <a className="icon" href={url} target="_blank" rel="noopener noreferrer">
       {svg}
     </a>
   );

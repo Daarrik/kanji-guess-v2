@@ -3,3 +3,15 @@
   align-items: center;
   flex-direction: column;
 }
+
+.result {
+  font-size: 10em;
+}
+
+.result-kanji {
+  font-size: 6em;
+}
+
+.result-button {
+  width: 75px;
+}

@@ -1,5 +1,4 @@
 export { default as BoxInput } from "./BoxInput/BoxInput";
-export { default as Footer } from "./Footer/Footer";
 export { default as Game } from "./Game/Game";
 export { default as Icon } from "./Icon/Icon";
 export { default as IconContainer } from "./IconContainer/IconContainer";

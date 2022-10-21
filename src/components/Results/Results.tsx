@@ -9,6 +9,7 @@ const Results = () => {
   const { guess, setGuess, setGuessed } = useContext(GuessContext);
 
   const [sentence, setSentence] = useState("");
+  const isCorrect = reading === guess;
 
   const handleClick = (retry: boolean): void => {
     setGuessed(false);
@@ -25,13 +26,29 @@ const Results = () => {
     setSentence(results[0]["text"]);
   };
 
+  // Maybe a bit too much conditional rendering
   return (
     <div className="results">
-      <h1 className="en-font">{reading === guess ? "correct" : "incorrect"}</h1>
+      <h1 className="result en-font">{isCorrect ? "correct" : "incorrect"}</h1>
+      <h1 className="result-kanji jp-font">{isCorrect ? "正解" : ""}</h1>
+      {isCorrect ? (
+        <h3 className="jp-font">{`${kanji} : ${reading}`}</h3>
+      ) : null}
       <div>
-        <button onClick={() => handleClick(true)}>Retry</button>
-        <button onClick={() => handleClick(false)}>New</button>
-        <button onClick={fetchSentence}>fetch</button>
+        <button
+          className="result-button en-font"
+          onClick={() => handleClick(false)}
+        >
+          Next
+        </button>
+        {!isCorrect ? (
+          <button
+            className="result-button en-font"
+            onClick={() => handleClick(true)}
+          >
+            Retry
+          </button>
+        ) : null}
         <p>{sentence}</p>
       </div>
     </div>

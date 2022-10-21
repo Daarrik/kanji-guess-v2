@@ -4,7 +4,7 @@ import {
   GuessContext,
   Game,
   Results,
-  Footer,
+  IconContainer,
 } from "./components";
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
     <div>
       <main>
         {!guessed ? <Game /> : <Results />}
-        {/* <Footer /> */}
+        <IconContainer />
       </main>
       <h1 className="kanji-backdrop jp-font">{kanji}</h1>
     </div>

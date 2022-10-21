@@ -11,10 +11,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid var(--text-color);
-  border-radius: 50%;
-  width: calc(var(--header-height) * 0.75);
-  height: calc(var(--header-height) * 0.75);
   bottom: 10px;
   right: 10px;
   cursor: pointer;

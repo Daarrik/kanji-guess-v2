@@ -1,14 +1,14 @@
-import React, { createContext, useState, useEffect } from "react";
-import { kanjiList } from "../../constants/kanji";
+import React, { createContext, useState } from "react";
+import { KanjiEntry, kanjiList } from "../../constants/kanji";
 import { kana } from "../../constants/kana";
 
 // Consider changing this to WordProvider/WordContext
-interface KanjiContextType {
+type KanjiContextType = {
   kanji: string;
   reading: string;
-  incorrectGuesses: Array<string>;
+  incorrectGuesses: string[];
   newKanji: () => void;
-}
+};
 
 export const KanjiContext = createContext<KanjiContextType>({
   kanji: "",
@@ -18,27 +18,29 @@ export const KanjiContext = createContext<KanjiContextType>({
 });
 
 const KanjiProvider = ({ children }: { children: React.ReactNode }) => {
-  const [kanji, setKanji] = useState("漢字");
-  const [reading, setReading] = useState("かんじ");
+  const [kanjiEntry, setKanjiEntry] = useState<KanjiEntry>(
+    () => kanjiList[Math.floor(Math.random() * kanjiList.length)]
+  );
 
   const newKanji = (): void => {
     const newEntry = kanjiList[Math.floor(Math.random() * kanjiList.length)];
-    const newKanji = newEntry["kanji"];
-    const newReading = newEntry["reading"];
-
-    setKanji(newKanji);
-    setReading(newReading);
+    setKanjiEntry(newEntry);
   };
 
-  const incorrectGuesses: Array<string> = [];
-  const numOfRandom = 10 - reading.length;
-    for(let i = 0; i < numOfRandom; i++) {
-      const randomKana: string = kana.charAt(Math.floor(Math.random() * kana.length));
-      incorrectGuesses.push(randomKana);
-    }
+  const kanji = kanjiEntry["kanji"];
+  const reading = kanjiEntry["reading"];
+  const incorrectGuesses: string[] = [];
+  for (let i = 0; i < 10 - reading.length; i++) {
+    const randomKana: string = kana.charAt(
+      Math.floor(Math.random() * kana.length)
+    );
+    incorrectGuesses.push(randomKana);
+  }
 
   return (
-    <KanjiContext.Provider value={{ kanji, reading, incorrectGuesses, newKanji }}>
+    <KanjiContext.Provider
+      value={{ kanji, reading, incorrectGuesses, newKanji }}
+    >
       {children}
     </KanjiContext.Provider>
   );
